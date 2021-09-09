@@ -7,26 +7,27 @@ These few python files are intended to simulate scrobbles outside of LastFM's ab
 ### Dependencies
 
 * APIs Used
-** LastFM
-** Google Drive/Sheets
+  * LastFM
+  * Google Drive/Sheets
 
 * Python Libraries
-** Pylast
-** Pandas
-** oauth2client
+  * Pylast
+  * Pandas
+  * oauth2client
 
 * Personal Necesscary files
-** sensitiveInfo.py
-** Generated sheets JSON
+  * sensitiveInfo.py
+  * Generated sheets JSON
 
 ### Setup
 
 * Both a Google Drive account as well as a LastFM account is needed.
-** First simply set up LastFM API using the website, I [used this link](https://www.last.fm/api/account/create) to create my API
+  * First simply set up LastFM API using the website, I [used this link](https://www.last.fm/api/account/create) to create my API
+
 * Google Drive API
-** Next a Google API account [I used this guide](https://developers.google.com/drive/api/v3/quickstart/python)
-** Unlike the LastFM api this requires a bit more work, and the creation of a file (quickstart.py) in order for a json to be generated for the corresponding Google Sheet.
-** 
+  * Next a Google API account [I used this guide](https://developers.google.com/drive/api/v3/quickstart/python)
+  * Unlike the LastFM api this requires a bit more work, and the creation of a file (quickstart.py) in order for a json to be generated for the corresponding Google Sheet.
+
 * Once both the Google Sheets API is pointing to a sheet with one column as "artist" and the next as "album" with coressponding albums for possible desired random scrobbles, all the personal information necessecary needs to be filled in to a sensitiveInfo.py file. 
 
 sensitiveInfo.py format:
