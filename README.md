@@ -48,7 +48,7 @@ EX: python3 randomScrobble.py 3
 ```
 ```
 python3 albumSrobble.py "artist" "album"
-EX: python3 albumScrobble.py Lorde Melodrama
+EX: python3 albumScrobble.py "Lorde" "Melodrama"
 ```
 
 
