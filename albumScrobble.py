@@ -50,23 +50,22 @@ def scrobble_track(artist_track, unix_timestamp):
     # print(track.playback_date + "\t" + unicode_track)
 
 
-def scrobble_album():
+def scrobble_album(albumArtist, albumTitle):
     artist = ""
     album = ""
-    try:
-        artist = sys.argv[1].replace('"','')
-        album = sys.argv[2].replace('"','')
-    except:
-        print(sys.argv)
-
     randAlbum = [artist, album]
-    print(randAlbum)
+    try:
+        artist = albumArtist.replace('"','')
+        album = albumTitle.replace('"','')
+        album = album.replace('\n','')
+
+        randAlbum = [artist, album]
+    except:
+        print(randAlbum)
     try:
         album = lastfm_network.get_album(randAlbum[0], randAlbum[1])
     except:
         print("FAILURE, COULD NOT FIND ALBUM ", randAlbum)
-    
-    #album = lastfm_network.get_album("Lorde", "The Love Club EP")
     albumToScrobble = album.get_tracks()
     length = len(albumToScrobble)
     print(length, " Total Tracks To Be Scrobbled")
@@ -93,5 +92,24 @@ def scrobble_album():
     else:
         print("Invalid Track Amt", randAlbum[0], " By :", randAlbum[1], " With a total of ", length)
 
-scrobble_album()
+def album_input():
+    if(len(sys.argv[1].split(".")) > 1):
+        ##Then its a text file
+        albumList = open(sys.argv[1])
+        for albumText in albumList:
+            albumDetails = albumText.split("-")
+            try:
+                scrobble_album(albumDetails[0], albumDetails[1])
+            except:
+                print("Error Scrobbling Album ", albumText)
+        albumList.close()
+    else:
+        try:
+            sys.argv[2]
+        except:
+            print("Album Title Not added!")
+        scrobble_album(sys.argv[1],sys.argv[2])
+
+album_input()
+
 # End of file
